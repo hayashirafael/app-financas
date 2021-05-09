@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Platform } from 'react-native';
 
-import {Background, AreaInput, Container, Input, Logo, SubmitButton, SubmitText, CreateButton, CreateText} from './styles'
+import {Background, AreaInput, Container, Input, Logo, SubmitButton, SubmitText, CreateButton, CreateText} from '../SignIn/styles'
 
 export default function SignIn() {
 
