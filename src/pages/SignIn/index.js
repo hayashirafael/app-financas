@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import { Platform } from 'react-native';
+import {useNavigation} from '@react-navigation/native' //conseguir navegar entre as telas
 
 import {Background, AreaInput, Container, Input, Logo, SubmitButton, SubmitText, CreateButton, CreateText} from './styles'
 
 export default function SignIn() {
+  const navigation = useNavigation()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -40,8 +42,8 @@ export default function SignIn() {
            <SubmitText>Acessar</SubmitText>
          </SubmitButton>
 
-         <CreateButton>
-           <CreateText>Criar uma conta</CreateText>
+         <CreateButton onPress={() => navigation.navigate('SignUp')}>
+           <CreateText>Cadastrar</CreateText>
          </CreateButton>
        </Container>
    </Background>

@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import { Platform } from 'react-native';
 
-import {Background, AreaInput, Container, Input, Logo, SubmitButton, SubmitText, CreateButton, CreateText} from '../SignIn/styles'
 
-export default function SignIn() {
+import {Background, AreaInput, Container, Input, Logo, SubmitButton, SubmitText} from '../SignIn/styles'
+
+export default function SignUp() {
+    
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [nome, setNome] = useState('')
 
  return (
    <Background>
@@ -14,7 +17,17 @@ export default function SignIn() {
        behavior={Platform.OS === 'ios' ? 'padding' : ''} //Caso reconheca que eh IOS, ira dar o padding
        enable
        >
-         <Logo source={require('../../assets/Dogecoin.png')} />
+         
+
+         <AreaInput>
+          <Input 
+          placeholder="Nome"
+          autoCorrect={false}
+          autoCapitalize="none"
+          value={nome}
+          onChangeText={(text) => setNome(text)}
+          />
+         </AreaInput>
 
          <AreaInput>
           <Input 
@@ -36,13 +49,13 @@ export default function SignIn() {
           />
          </AreaInput>
 
+         
+
          <SubmitButton>
-           <SubmitText>Acessar</SubmitText>
+           <SubmitText>CADASTRAR</SubmitText>
          </SubmitButton>
 
-         <CreateButton>
-           <CreateText>Criar uma conta</CreateText>
-         </CreateButton>
+       
        </Container>
    </Background>
   );
