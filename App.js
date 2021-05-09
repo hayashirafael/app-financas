@@ -4,12 +4,15 @@ import { View, Text, StatusBar } from 'react-native'
 import database from '@react-native-firebase/database'
 import 'react-native-gesture-handler'
 import Routes from './src/routes/index'
+import AuthProvider from './src/contexts/auth'
 
 export default function App() {
  return (
    <NavigationContainer>
-     <StatusBar backgroundColor="#131313" barStyle="light-content" />
-     <Routes/>
+     <AuthProvider>
+      <StatusBar backgroundColor="#131313" barStyle="light-content" />
+      <Routes/>
+     </AuthProvider>
    </NavigationContainer>
   )
 }

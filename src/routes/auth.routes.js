@@ -15,8 +15,9 @@ function AuthRoutes() {
                 headerShown: true, 
                 headerStyle:
                 {backgroundColor: '#131313',
-                borderWidth: 1,
-                borderBottomColor: '#d2a83e'},
+                borderWidth: 0,
+                //borderBottomColor: '#d2a83e'
+            },
                 
                 headerTintColor: '#fff',
                 headerBackTitle: false,

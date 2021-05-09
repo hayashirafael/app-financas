@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Platform } from 'react-native';
 import {useNavigation} from '@react-navigation/native' //conseguir navegar entre as telas
+import { AuthContext } from '../../contexts/auth'
 
 import {Background, AreaInput, Container, Input, Logo, SubmitButton, SubmitText, CreateButton, CreateText} from './styles'
 
@@ -9,6 +10,9 @@ export default function SignIn() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const {user} = useContext(AuthContext)
+
+  
 
  return (
    <Background>
