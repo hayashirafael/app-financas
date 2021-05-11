@@ -8,13 +8,16 @@ export const AuthContext = createContext({})
 
 function AuthProvider({children}) {
     const [user, setUser] = useState(null) //autenticacao do login
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function loadStorage() {
             const storageUser = await AsyncStorage.getItem('Auth_user');
             if(storageUser) {
                 setUser(JSON.parse(storageUser))
+                setLoading(false) //depois de carregar, muda o status do loading
             }
+            setLoading(false)
         }
         loadStorage()
     }, [])
@@ -68,7 +71,7 @@ function AuthProvider({children}) {
     }
 
     return(
-        <AuthContext.Provider value={{signed: !!user, user, signUp, signIn}} >
+        <AuthContext.Provider value={{signed: !!user, user, signUp, signIn, loading}} >
             {children}
         </AuthContext.Provider>
     )
