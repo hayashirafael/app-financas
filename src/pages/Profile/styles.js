@@ -39,6 +39,7 @@ background-color: #c62c36;
 width: 90%;
 height: 45px;
 border-radius: 10px;
+margin-top: 98%;
 `;
 
 export const TextLogout = styled.Text`
