@@ -1,10 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {ViewContainer, TextNome, ButtonNewLink, NewText, ButtonLogout, TextLogout} from './styles'
 
 export default function Profile() {
  return (
-   <View>
-       <Text>Profile</Text>
-   </View>
+   <ViewContainer>
+     <TextNome>
+       Teste
+     </TextNome>
+
+     <ButtonNewLink>
+        <NewText>Registrar Gastos</NewText>
+     </ButtonNewLink>
+
+     <ButtonLogout>
+       <TextLogout>Logout</TextLogout>
+     </ButtonLogout>
+   </ViewContainer>
   );
 }
