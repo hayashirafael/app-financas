@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 
 export const ViewContainer = styled.View`
-margin-top: 30px;
-margin-left: 15px;
+margin-top: 15px;
+margin-left: 10px;
 margin-bottom: 15px;
 width: 100%;
 height: 50px;
