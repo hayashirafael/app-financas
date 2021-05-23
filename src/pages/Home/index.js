@@ -33,7 +33,7 @@ export default function Home() {
      showVerticalScrollIndicator={false}
      data={historico}
      keyExtractor={item => item.key}
-     renderItem={({item}) => (<HistoricoList/>)}
+     renderItem={({item}) => (<HistoricoList data={item}/>)}
      />
 
    </ViewContainer>
