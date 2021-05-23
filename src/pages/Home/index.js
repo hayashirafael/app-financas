@@ -15,6 +15,10 @@ export default function Home() {
     {key: 2, tipo: 'despesa', valor: 200},
     {key: 3, tipo: 'receita', valor: 40},
     {key: 4, tipo: 'despesa', valor: 89.62},
+    {key: 5, tipo: 'despesa', valor: 542.67},
+    {key: 6, tipo: 'despesa', valor: 24.12},
+    {key: 7, tipo: 'despesa', valor: 389.02},
+    {key: 8, tipo: 'despesa', valor: 189.54},
   ])
 
   const {user, signOut} = useContext(AuthContext)
@@ -24,13 +28,13 @@ export default function Home() {
      <Header/>
 
      <ViewNomeSaldo>
-       <Nome>{user.nome}</Nome>
+       <Nome>{user && user.nome}</Nome>
        <Saldo>Saldo: R${user.saldo}</Saldo>
      </ViewNomeSaldo>
 
      <TextMovimentacao>Ultimas movimentações</TextMovimentacao>
      <List
-     showVerticalScrollIndicator={false}
+     showsVerticalScrollIndicator={false}
      data={historico}
      keyExtractor={item => item.key}
      renderItem={({item}) => (<HistoricoList data={item}/>)}

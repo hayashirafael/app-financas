@@ -12,7 +12,7 @@ flex-direction: row;
 `;
 export const ViewIcone = styled.View`
 flex-direction: row;
-background-color: #049301;
+background-color: ${props => props.tipo === 'despesa' ? '#c62c36' : '#049301'};
 padding-bottom: 3px;
 padding-top: 3px;
 padding-right: 8px;
