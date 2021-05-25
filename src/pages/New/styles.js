@@ -27,4 +27,5 @@ background-color: #00b94a;
 export const SubmitText = styled.Text`
 font-size: 21px;
 font-weight: bold;
+
 `;
