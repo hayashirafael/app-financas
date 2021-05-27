@@ -1,7 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import Header from '../../components/Header'
 import HistoricoList from '../../components/HistoricoList'
 import {ViewContainer, ViewNomeSaldo, Nome, Saldo, TextMovimentacao, List} from './styles'
+import database from '@react-native-firebase/database'
 
 
 import {AuthContext} from '../../contexts/auth'
@@ -10,18 +11,19 @@ import {AuthContext} from '../../contexts/auth'
 
 export default function Home() {
 
-  const [historico, setHistorico] = useState([
-    {key: 1, tipo: 'receita', valor: 1200},
-    {key: 2, tipo: 'despesa', valor: 200},
-    {key: 3, tipo: 'receita', valor: 40},
-    {key: 4, tipo: 'despesa', valor: 89.62},
-    {key: 5, tipo: 'despesa', valor: 542.67},
-    {key: 6, tipo: 'despesa', valor: 24.12},
-    {key: 7, tipo: 'despesa', valor: 389.02},
-    {key: 8, tipo: 'despesa', valor: 189.54},
-  ])
+  const [historico, setHistorico] = useState([])
+  const [saldo, setSaldo] = useState(0)
+  const {user} = useContext(AuthContext)
+  const uid = user && user.uid
 
-  const {user, signOut} = useContext(AuthContext)
+  useEffect(() => {
+    async function loadList() {
+      await database().ref('users').child(uid).on('value', (snapshop)=> {
+        setSaldo(snapshop.val().saldo)
+      })
+    }
+    loadList()
+  }, [])
 
  return (
    <ViewContainer>
@@ -29,7 +31,7 @@ export default function Home() {
 
      <ViewNomeSaldo>
        <Nome>{user && user.nome}</Nome>
-       <Saldo>Saldo: R${user.saldo}</Saldo>
+       <Saldo>Saldo: R$ {saldo.toFixed(2)}</Saldo>
      </ViewNomeSaldo>
 
      <TextMovimentacao>Ultimas movimentações</TextMovimentacao>
