@@ -6,8 +6,11 @@ import {ViewContainer, Input, SubmitButton, SubmitText} from './styles'
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 import { format } from 'date-fns'
+import {useNavigation} from '@react-navigation/native'
 
 export default function New() {
+
+  const navigation = useNavigation()
   const [valor, setValor] = useState('')
   const [tipo, setTipo] = useState('1')
 
@@ -52,6 +55,7 @@ export default function New() {
     setValor('')
     Keyboard.dismiss()
     alert('valor adicionado')
+    navigation.navigate('Home')
   }
 
  return (
