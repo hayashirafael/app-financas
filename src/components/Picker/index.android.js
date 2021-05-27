@@ -10,6 +10,7 @@ export default function Picker({onChange, tipo}) {
     selectedValue={tipo}
     onValueChange={(valor) => onChange(valor)}
     >
+      <Picker.Item label="Selecione uma opção" value="1" />
     <Picker.Item label="Receita" value="receita" />
     <Picker.Item label="Despesa" value="despesa" />
     
