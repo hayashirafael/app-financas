@@ -52,7 +52,7 @@ function AuthProvider({children}) {
 
     //Cadatrar usuario
     async function signUp(email, password, nome) {
-        setloadingAuth(false)
+        
         setloadingAuth(true)
         await auth().createUserWithEmailAndPassword(email, password).then(async(value) => {
             let uid = value.user.uid
