@@ -9,6 +9,7 @@ export const AuthContext = createContext({})
 function AuthProvider({children}) {
     const [user, setUser] = useState(null) //autenticacao do login
     const [loading, setLoading] = useState(true)
+    const [loadingAuth, setloadingAuth] = useState(false)
 
     useEffect(() => {
         async function loadStorage() {
@@ -24,6 +25,7 @@ function AuthProvider({children}) {
 
     //Logar usuario
     async function signIn(email, password){
+        setloadingAuth(true)
         await auth().signInWithEmailAndPassword(email,password)
         .then(async (value)=>{
             let uid = value.user.uid;
@@ -37,16 +39,21 @@ function AuthProvider({children}) {
 
                 setUser(data)
                 storageUser(data)
+                setloadingAuth(false)
                 
             })
         })
         .catch((error)=> {
+            setloadingAuth(true)
             alert(error.code)
+            setloadingAuth(false)
         })
     }
 
     //Cadatrar usuario
     async function signUp(email, password, nome) {
+        setloadingAuth(false)
+        setloadingAuth(true)
         await auth().createUserWithEmailAndPassword(email, password).then(async(value) => {
             let uid = value.user.uid
             await database().ref('users').child(uid).set({
@@ -61,9 +68,12 @@ function AuthProvider({children}) {
                 }
                 setUser(data)
                 storageUser(data)
+                setloadingAuth(false)
             })
         })
-        .catch((error) => {alert(error.code)})
+        .catch((error) => {alert(error.code);
+        setloadingAuth(true);
+        })
     }
 
     async function storageUser(data) {
@@ -79,7 +89,7 @@ function AuthProvider({children}) {
     }
 
     return(
-        <AuthContext.Provider value={{signed: !!user, user, signUp, signIn, signOut, loading}} >
+        <AuthContext.Provider value={{signed: !!user, user, signUp, signIn, signOut, loading, loadingAuth}} >
             {children}
         </AuthContext.Provider>
     )
