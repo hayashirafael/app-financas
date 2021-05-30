@@ -44,7 +44,6 @@ function AuthProvider({children}) {
             })
         })
         .catch((error)=> {
-            setloadingAuth(true)
             alert(error.code)
             setloadingAuth(false)
         })
@@ -72,7 +71,7 @@ function AuthProvider({children}) {
             })
         })
         .catch((error) => {alert(error.code);
-        setloadingAuth(true);
+        setloadingAuth(false);
         })
     }
 
